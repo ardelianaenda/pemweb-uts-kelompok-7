@@ -664,3 +664,22 @@ table th {
         width: min(100% - 32px, 1120px);
     }
 }
+
+.management-page .site-header {
+    position: relative;
+    background: #302219;
+}
+
+.management-main {
+    padding-top: 40px;
+    padding-bottom: 80px;
+    min-height: 70vh;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.management-page .page-shell {
+    margin-top: 20px;
+}

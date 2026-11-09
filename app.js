@@ -3,6 +3,7 @@ const path = require('path');
 
 const dashboardRoutes = require('./routes/dashboardRoutes');
 const errorHandler = require('./middlewares/errorHandler');
+const pesananRoutes = require('./routes/pesananRoutes');
 
 const app = express();
 
@@ -13,6 +14,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/pesanan', pesananRoutes);
 
 app.use('/', dashboardRoutes);
 

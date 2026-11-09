@@ -34,11 +34,14 @@ exports.index = async (req, res, next) => {
 };
 
 // Menampilkan form tambah
+
 exports.formTambah = (req, res) => {
   res.render('pelanggan/create', {
+    title: 'Tambah Pelanggan',
     error: req.query.error || ''
   });
 };
+
 
 // CREATE - Menyimpan pelanggan
 exports.tambah = async (req, res) => {

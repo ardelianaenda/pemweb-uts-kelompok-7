@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <%- include('partials/head', { title: title }) %>
+</head>
+<body class="home-page">
+
+    <%- include('partials/navbar', { activePage: activePage }) %>
+
+    <section class="hero">
+        <div class="hero-overlay"></div>
+
+        <div class="container hero-inner">
+            <div class="hero-content">
+                <p class="hero-script">Brewed for warm moments</p>
+
+                <h1 class="hero-title">
+                    A cozy café for good coffee, calm mornings,
+                    and meaningful conversations.
+                </h1>
+
+                <p class="hero-description">
+                    Sunday Cafe adalah tempat untuk menikmati kopi yang hangat,
+                    suasana yang tenang, dan momen santai bersama orang-orang terdekat.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#signature-menu" class="btn btn-primary">Explore Menu</a>
+                    <a href="#about" class="btn btn-outline">Our Story</a>
+                </div>
+
+                <div class="hero-tags">
+                    <span>Fresh Brew</span>
+                    <span>Warm Space</span>
+                    <span>Sweet Pairings</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="section">
+    <div class="container">
+
+        <div class="section-heading center">
+            <h2>Sunday Cafe Management</h2>
+            <p>Kelola seluruh aktivitas cafe dalam satu sistem.</p>
+        </div>
+
+        <div class="feature-grid">
+            <a href="/kategori" class="feature-card">
+                <h3>Kategori Menu</h3>
+                <p>Kelola kategori makanan dan minuman.</p>
+            </a>
+
+            <a href="/menu" class="feature-card">
+                <h3>Menu Cafe</h3>
+                <p>Kelola daftar menu, harga, dan stok.</p>
+            </a>
+
+            <a href="/pelanggan" class="feature-card">
+                <h3>Pelanggan</h3>
+                <p>Kelola data pelanggan cafe.</p>
+            </a>
+
+            <a href="/meja" class="feature-card">
+                <h3>Meja Cafe</h3>
+                <p>Kelola nomor meja dan ketersediaannya.</p>
+            </a>
+
+            <a href="/pesanan" class="feature-card">
+                <h3>Pesanan</h3>
+                <p>Kelola pesanan pelanggan.</p>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+    <section class="section intro-section">
+        <div class="container">
+            <div class="section-heading center">
+                <p class="section-label">Why Sunday Cafe</p>
+                <h2>Simple moments, beautifully served</h2>
+                <p>
+                    Palet warna hangat, elemen lembut, dan tata letak yang nyaman
+                    membuat tampilan Sunday Cafe terasa modern namun tetap homey.
+                </p>
+            </div>
+
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <span class="feature-number">01</span>
+                    <h3>Artisan Coffee</h3>
+                    <p>
+                        Biji kopi pilihan dengan rasa yang seimbang, cocok untuk pagi
+                        yang tenang maupun sore yang santai.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <span class="feature-number">02</span>
+                    <h3>Cozy Ambience</h3>
+                    <p>
+                        Interior yang hangat dengan nuansa earthy, membuat pengunjung
+                        betah duduk lebih lama.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <span class="feature-number">03</span>
+                    <h3>Sweet Pairings</h3>
+                    <p>
+                        Kopi terbaik selalu lebih nikmat ditemani pastry dan dessert
+                        yang lembut.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section menu-section" id="signature-menu">
+        <div class="container">
+            <div class="section-heading">
+                <div>
+                    <p class="section-label">Signature Menu</p>
+                    <h2>Sunday favorites to try first</h2>
+                </div>
+
+                <a href="#visit" class="text-link">Visit us →</a>
+            </div>
+
+            <div class="menu-grid">
+                <article class="menu-card">
+                    <div class="menu-card-image coffee-one"></div>
+                    <div class="menu-card-body">
+                        <h3>Caramel Latte</h3>
+                        <p>Espresso, steamed milk, dan sentuhan karamel yang lembut.</p>
+                        <span>Rp28.000</span>
+                    </div>
+                </article>
+
+                <article class="menu-card">
+                    <div class="menu-card-image coffee-two"></div>
+                    <div class="menu-card-body">
+                        <h3>Butter Croissant</h3>
+                        <p>Pastry renyah di luar, lembut di dalam, cocok untuk teman kopi.</p>
+                        <span>Rp18.000</span>
+                    </div>
+                </article>
+
+                <article class="menu-card">
+                    <div class="menu-card-image coffee-three"></div>
+                    <div class="menu-card-body">
+                        <h3>Mocha Cream</h3>
+                        <p>Perpaduan kopi dan cokelat yang manis dengan aftertaste hangat.</p>
+                        <span>Rp30.000</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section story-section" id="about">
+        <div class="container story-grid">
+            <div class="story-card">
+                <p class="section-label">Our Story</p>
+                <h2>Built for slowing down</h2>
+                <p>
+                    Sunday Cafe hadir sebagai tempat singgah yang nyaman:
+                    bukan hanya untuk minum kopi, tetapi juga untuk berbincang,
+                    bekerja santai, atau menikmati waktu sendiri.
+                </p>
+                <p>
+                    Nuansa visualnya dibuat lembut dan hangat agar sesuai dengan
+                    karakter brand: calm, elegant, and welcoming.
+                </p>
+            </div>
+
+            <div class="quote-card">
+                <p class="quote-text">
+                    “A café built on good coffee, great people, and a love for slowing down.”
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section visit-section" id="visit">
+        <div class="container visit-card">
+            <div>
+                <p class="section-label">Visit Us</p>
+                <h2>Come for the coffee, stay for the feeling</h2>
+                <p>
+                    Sunday Cafe siap menjadi tempat favorit untuk bertemu teman,
+                    berdiskusi, atau menikmati akhir pekan yang santai.
+                </p>
+            </div>
+
+            <div class="visit-info">
+                <div class="info-box">
+                    <h4>Address</h4>
+                    <p>Denpasar, Bali</p>
+                </div>
+
+                <div class="info-box">
+                    <h4>Opening Hours</h4>
+                    <p>Everyday · 08:00 - 22:00</p>
+                </div>
+
+                <div class="info-box">
+                    <h4>Contact</h4>
+                    <p>0815-2934-2303</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <%- include('partials/footer') %>
+
+</body>
+</html>

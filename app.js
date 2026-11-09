@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 
+const menuRoutes = require('./routes/menuRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
 const errorHandler = require('./middlewares/errorHandler');
 const kategoriRoutes = require('./routes/kategoriRoutes');
@@ -15,6 +16,7 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/menu', menuRoutes);
 app.use('/', dashboardRoutes);
 app.use('/kategori', kategoriRoutes);
 

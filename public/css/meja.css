@@ -1,0 +1,406 @@
+
+/* ==========================================
+   SUNDAY CAFE - CRUD MEJA
+   Mengikuti tema utama style.css
+========================================== */
+
+/* HALAMAN */
+
+body.meja-screen {
+    background: var(--bg, #f7f1ea);
+    color: var(--text, #37261f);
+    font-family: 'Inter', sans-serif;
+}
+
+/* NAVAR */
+
+body.meja-screen .site-header {
+    position: relative;
+    background: var(--coffee-dark, #2d1e17);
+}
+
+/* MAIN CONTENT */
+
+.meja-page {
+    width: 100%;
+    min-height: auto;
+    padding: 40px 24px 48px;
+    background: var(--bg, #f7f1ea);
+}
+
+.meja-page *,
+.meja-page *::before,
+.meja-page *::after {
+    box-sizing: border-box;
+}
+
+.meja-container {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
+/* HEADER */
+
+.meja-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.meja-eyebrow,
+.meja-subtitle {
+    display: inline-block;
+    color: #a77b4d;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.meja-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 4vw, 40px);
+    color: var(--coffee-dark);
+    margin: 0 0 10px;
+    line-height: 1.25;
+}
+
+.meja-header p {
+    color: var(--muted);
+    font-size: 15px;
+    margin: 0;
+}
+
+/* BUTTON */
+
+.meja-page .meja-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 22px;
+    border-radius: 100px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all .2s ease;
+    white-space: nowrap;
+}
+
+.meja-page .meja-btn-primary {
+    background: var(--coffee);
+    color: #fffaf5;
+}
+
+.meja-page .meja-btn-primary:hover {
+    background: var(--coffee-dark);
+    transform: translateY(-2px);
+}
+
+.meja-page .meja-btn-back {
+    background: var(--surface-soft);
+    color: var(--coffee);
+}
+
+.meja-page .meja-btn-back:hover {
+    background: #e8d8c7;
+}
+
+/* CARD */
+
+.meja-card,
+.meja-form-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    box-shadow: var(--shadow);
+}
+
+.meja-card-top,
+.meja-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 24px;
+}
+
+.meja-card-top h2,
+.meja-card-header h2,
+.meja-form-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+    color: var(--coffee-dark);
+    margin: 0;
+}
+
+.meja-card-top span,
+.meja-card-header span {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+/* TABLE */
+
+.meja-table-wrap,
+.meja-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.meja-table {
+    width: 100%;
+    min-width: 600px;
+    border-collapse: collapse;
+    background: var(--surface);
+}
+
+.meja-table th {
+    padding: 16px;
+    background: var(--coffee);
+    color: #fffaf5;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 700;
+    border-bottom: none;
+}
+
+.meja-table th:first-child {
+    border-radius: 10px 0 0 0;
+}
+
+.meja-table th:last-child {
+    border-radius: 0 10px 0 0;
+}
+
+.meja-table td {
+    padding: 17px 16px;
+    color: var(--text);
+    font-size: 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+}
+
+.meja-table tbody tr:hover {
+    background: #fff8f0;
+}
+
+.meja-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.meja-table td strong {
+    color: var(--coffee-dark);
+}
+
+.meja-empty {
+    text-align: center;
+    padding: 35px !important;
+    color: var(--muted) !important;
+}
+
+/* STATUS */
+
+.meja-status {
+    display: inline-block;
+    padding: 7px 13px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.meja-status.tersedia {
+    background: #e4f1e5;
+    color: #43683a;
+}
+
+.meja-status.terisi {
+    background: #fceae4;
+    color: #a84936;
+}
+
+.meja-status.reservasi {
+    background: #f5ebd5;
+    color: #896522;
+}
+
+/* ACTION BUTTON */
+
+.meja-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.meja-actions form {
+    display: inline-block;
+    margin: 0;
+}
+
+.meja-page .meja-btn-edit,
+.meja-page .meja-btn-delete {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 17px;
+    border-radius: 100px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.meja-page .meja-btn-edit {
+    background: #f1e3d2;
+    color: var(--coffee);
+}
+
+.meja-page .meja-btn-edit:hover {
+    background: #dec4a6;
+    transform: translateY(-2px);
+}
+
+.meja-page .meja-btn-delete {
+    background: #fceae4;
+    color: #a84936;
+}
+
+.meja-page .meja-btn-delete:hover {
+    background: #f2d0c5;
+    transform: translateY(-2px);
+}
+
+/* FORM */
+
+.meja-form-card {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 38px;
+}
+
+.meja-form-card h2 {
+    padding-bottom: 22px;
+    margin-bottom: 26px;
+    border-bottom: 1px solid var(--border);
+}
+
+.meja-form-group {
+    margin-bottom: 24px;
+}
+
+.meja-form-group label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--coffee-dark);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.meja-form-group input,
+.meja-form-group select {
+    width: 100%;
+    padding: 15px 18px;
+    border: 1px solid #e4d7c8;
+    border-radius: 12px;
+    background: #fffdfa;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    transition: .2s ease;
+}
+
+.meja-form-group input:focus,
+.meja-form-group select:focus {
+    outline: none;
+    border-color: #b79064;
+    box-shadow: 0 0 0 4px rgba(183,144,100,.13);
+}
+
+.meja-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+}
+
+/* ALERT */
+
+.meja-alert {
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    background: #fff0e9;
+    color: #994b35;
+    border: 1px solid #f0cab9;
+    border-radius: 12px;
+    font-size: 14px;
+}
+
+/* FOOTER
+   Menggunakan footer global dari style.css
+*/
+
+body.meja-screen .site-footer {
+    margin-top: 0;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 992px) {
+    .meja-header {
+        align-items: flex-start;
+    }
+
+    .meja-card,
+    .meja-form-card {
+        padding: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .meja-page {
+        padding: 30px 16px 40px;
+    }
+
+    .meja-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .meja-header h1 {
+        font-size: 29px;
+    }
+
+    .meja-card,
+    .meja-form-card {
+        padding: 20px;
+    }
+
+    .meja-card-top,
+    .meja-card-header {
+        flex-wrap: wrap;
+    }
+
+    .meja-form-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .meja-form-actions .meja-btn {
+        width: 100%;
+    }
+}

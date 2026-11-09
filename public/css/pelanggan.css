@@ -1,0 +1,278 @@
+
+/* ================================
+   HALAMAN PELANGGAN - SUNDAY CAFE
+   ================================ */
+
+body.pelanggan-page {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f8f3ed;
+  color: #392820;
+  font-family: Arial, sans-serif;
+}
+
+body.pelanggan-page * {
+  box-sizing: border-box;
+}
+
+/* Navbar khusus halaman Pelanggan */
+body.pelanggan-page > header,
+body.pelanggan-page .navbar,
+body.pelanggan-page .site-header {
+  background: #fffaf5 !important;
+  color: #392820 !important;
+  position: relative !important;
+  top: auto !important;
+  text-shadow: none !important;
+}
+
+body.pelanggan-page > header a,
+body.pelanggan-page > header h1,
+body.pelanggan-page > header .brand,
+body.pelanggan-page .navbar a,
+body.pelanggan-page .navbar .brand,
+body.pelanggan-page .site-header a,
+body.pelanggan-page .site-header .brand {
+  color: #392820 !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+/* Konten utama */
+body.pelanggan-page .pelanggan-main {
+  width: min(1050px, calc(100% - 32px));
+  margin: 40px auto 60px;
+  flex: 1;
+  padding: 0;
+}
+
+.pelanggan-card {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(58, 38, 27, 0.08);
+}
+
+.pelanggan-judul {
+  font-size: 30px;
+  color: #392820;
+  margin: 0 0 10px;
+}
+
+.pelanggan-deskripsi {
+  color: #77675e;
+  margin: 0 0 25px;
+}
+
+.pelanggan-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+/* Tombol */
+.pelanggan-btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.pelanggan-btn-primary {
+  background: #57392d;
+  color: white !important;
+}
+
+.pelanggan-btn-primary:hover {
+  background: #3c271f;
+}
+
+.pelanggan-btn-edit {
+  background: #eee1d2;
+  color: #57392d !important;
+}
+
+.pelanggan-btn-danger {
+  background: #b84b43;
+  color: white !important;
+}
+
+.pelanggan-btn-secondary {
+  background: #eee9e3;
+  color: #392820 !important;
+}
+
+/* Tabel */
+.pelanggan-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.pelanggan-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.pelanggan-table th {
+  background: #f1e7dc;
+  color: #392820;
+  text-align: left;
+  padding: 15px;
+  font-size: 14px;
+}
+
+.pelanggan-table td {
+  padding: 15px;
+  border-bottom: 1px solid #eee7e0;
+  font-size: 14px;
+}
+
+.pelanggan-table tbody tr:hover {
+  background: #fcf8f4;
+}
+
+.pelanggan-aksi {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.pelanggan-aksi form {
+  margin: 0;
+}
+
+/* Form tambah dan edit */
+.pelanggan-form {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.pelanggan-form .form-group {
+  margin-bottom: 20px;
+}
+
+.pelanggan-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.pelanggan-form input {
+  display: block;
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d9c9bd;
+  border-radius: 8px;
+  font-size: 15px;
+  background: white;
+  color: #392820;
+}
+
+.pelanggan-form input:focus {
+  outline: none;
+  border-color: #57392d;
+  box-shadow: 0 0 0 3px rgba(87, 57, 45, 0.12);
+}
+
+.pelanggan-form .form-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+/* Pesan */
+.pelanggan-alert {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.pelanggan-alert-success {
+  background: #e8f4eb;
+  color: #28623b;
+}
+
+.pelanggan-alert-error {
+  background: #fce9e7;
+  color: #9c302a;
+}
+
+/* Footer tetap di bagian bawah */
+body.pelanggan-page > footer,
+body.pelanggan-page .site-footer {
+  margin-top: auto;
+}
+
+/* Tampilan HP */
+@media (max-width: 600px) {
+  .pelanggan-card {
+    padding: 18px;
+  }
+
+  .pelanggan-judul {
+    font-size: 24px;
+  }
+
+  .pelanggan-table th,
+  .pelanggan-table td {
+    padding: 10px;
+  }
+
+  .pelanggan-btn {
+    padding: 9px 12px;
+  }
+
+  .pelanggan-aksi {
+    flex-wrap: wrap;
+  }
+}
+
+/* FOOTER LEBIH RAMPING - KHUSUS PELANGGAN */
+body.pelanggan-page footer,
+body.pelanggan-page .site-footer {
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  min-height: 0 !important;
+}
+
+body.pelanggan-page footer h2,
+body.pelanggan-page footer h3,
+body.pelanggan-page footer p,
+body.pelanggan-page .site-footer h2,
+body.pelanggan-page .site-footer h3,
+body.pelanggan-page .site-footer p {
+  margin-top: 4px !important;
+  margin-bottom: 4px !important;
+  line-height: 1.3 !important;
+}
+
+body.pelanggan-page footer .container,
+body.pelanggan-page footer .footer-content,
+body.pelanggan-page footer .footer-container,
+body.pelanggan-page .site-footer .container,
+body.pelanggan-page .site-footer .footer-content {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  gap: 10px !important;
+}
+
+/* Kurangi ruang kosong halaman */
+body.pelanggan-page .pelanggan-main {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+body.pelanggan-page .pelanggan-card {
+  padding: 22px;
+}

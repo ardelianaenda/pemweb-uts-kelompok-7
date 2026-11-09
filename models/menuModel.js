@@ -1,5 +1,9 @@
 const database = require('../config/database');
-const db = database.pool || database;
+const pool = database.pool || database;
+
+const db = typeof pool.promise === 'function'
+  ? pool.promise()
+  : pool;
 
 // READ: menampilkan semua menu
 async function getAll() {

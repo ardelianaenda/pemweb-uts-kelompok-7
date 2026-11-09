@@ -8,6 +8,7 @@ const errorHandler = require('./middlewares/errorHandler');
 const kategoriRoutes = require('./routes/kategoriRoutes');
 const menuRoutes = require('./routes/menuRoutes');
 const pelangganRoutes = require('./routes/pelangganRoutes');
+const mejaRoutes = require('./routes/mejaRoutes');
 
 const app = express();
 
@@ -27,6 +28,9 @@ app.use('/menu', menuRoutes);
 
 // CRUD Pelanggan - Anggota 3
 app.use('/pelanggan', pelangganRoutes);
+
+// CRUD Meja - Anggota 4
+app.use('/meja', mejaRoutes);
 
 // Dashboard Sunday Cafe
 app.use('/', dashboardRoutes);

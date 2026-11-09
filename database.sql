@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS meja (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nomor_meja VARCHAR(10) NOT NULL UNIQUE,
     kapasitas INT NOT NULL,
-    status ENUM('tersedia', 'terisi')
+    status ENUM('tersedia', 'terisi', 'reservasi')
         NOT NULL DEFAULT 'tersedia'
 ) ENGINE=InnoDB;
 

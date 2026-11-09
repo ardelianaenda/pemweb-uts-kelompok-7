@@ -31,6 +31,12 @@
                 <%= successMessage %>
             </div>
             <% } %>
+        <% if (errorMessage) { %>
+            <div class="category-error" role="alert">
+                <span>⚠️</span>
+                <span><%= errorMessage %></span>
+            </div>
+            <% } %>
 
             <div class="table-card">
                 <div class="table-responsive">
@@ -59,13 +65,28 @@
                                         <td><%= item.nama %></td>
                                         <td><%= item.deskripsi || '-' %></td>
                                         <td>
-                                            <a
-                                            href="/kategori/edit/<%= item.id %>"
-                                            class="btn-edit"
+                                            <div class="category-action-buttons">
+                                                <a
+                                                href="/kategori/edit/<%= item.id %>"
+                                                class="btn-edit"
+                                                >
+                                                ✎ Edit
+                                            </a>
+                                            <form
+                                            action="/kategori/hapus/<%= item.id %>"
+                                            method="POST"
+                                            class="delete-form"
+                                            onsubmit="return confirm('Yakin ingin menghapus kategori ini?')"
                                             >
-                                            ✎ Edit
-                                        </a>
-                                    </td>
+                                            <button
+                                            type="submit"
+                                            class="btn-delete"
+                                            >
+                                            🗑 Hapus
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
                                 </tr>
                                 <% }) %>
                             <% } %>

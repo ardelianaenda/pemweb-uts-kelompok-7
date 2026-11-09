@@ -927,3 +927,75 @@ table th {
     background: #FFF8F0;
 }
 
+.category-action-buttons {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.delete-form {
+    display: inline-block;
+    margin: 0;
+}
+
+.btn-delete {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 9px 18px;
+    border: 1px solid #F2D1C5;
+    border-radius: 100px;
+
+    background: #FCEAE4;
+    color: #A84936;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.btn-delete:hover {
+    background: #F2D0C5;
+    color: #873726;
+    transform: translateY(-2px);
+}
+
+.btn-delete:focus-visible {
+    outline: 3px solid #D8AC62;
+    outline-offset: 3px;
+}
+
+.category-error {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 14px 18px;
+    margin-bottom: 20px;
+
+    background: #FFF0E9;
+    color: #994B35;
+
+    border: 1px solid #F0CAB9;
+    border-radius: 12px;
+
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    .category-action-buttons {
+        gap: 8px;
+    }
+
+    .btn-edit,
+    .btn-delete {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+}

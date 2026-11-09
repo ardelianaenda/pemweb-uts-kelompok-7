@@ -2,21 +2,46 @@ const kategoriModel = require('../models/kategoriModel');
 
 exports.index = async (req, res, next) => {
     try {
-        const kategori = await kategoriModel.getAllKategori();
+        const kategori =
+            await kategoriModel.getAllKategori();
+
+        let successMessage = null;
+        let errorMessage = null;
+
+        if (req.query.success === 'ditambah') {
+            successMessage =
+                'Kategori baru berhasil ditambahkan!';
+        } else if (req.query.success === 'diubah') {
+            successMessage =
+                'Kategori berhasil diperbarui!';
+        } else if (req.query.success === 'dihapus') {
+            successMessage =
+                'Kategori berhasil dihapus!';
+        }
+
+        if (req.query.error === 'digunakan') {
+            errorMessage =
+                'Kategori tidak dapat dihapus karena masih digunakan oleh menu cafe.';
+        } else if (req.query.error === 'tidak-ditemukan') {
+            errorMessage =
+                'Kategori tidak ditemukan. Mungkin sudah dihapus.';
+        } else if (req.query.error === 'id-tidak-valid') {
+            errorMessage =
+                'ID kategori tidak valid.';
+        }
+
         res.render('kategori/index', {
             title: 'Kategori Menu - Sunday Cafe',
-            kategori: kategori,
-            successMessage:
-            req.query.success === 'ditambah'
-            ? 'Kategori baru berhasil ditambahkan!'
-            : req.query.success === 'diubah'
-            ? 'Kategori berhasil diperbarui!'
-            : null
+            kategori,
+            successMessage,
+            errorMessage
         });
+
     } catch (error) {
         next(error);
     }
 };
+
 
 exports.createForm = (req, res) => {
     let errorMessage = null;
@@ -181,4 +206,44 @@ exports.update = async (req, res, next) => {
         next(error);
     }
 };
+
+exports.destroy = async (req, res, next) => {
+
+    const id = ambilIdKategori(req);
+
+    if (!id) {
+        return res.redirect(
+            303,
+            '/kategori?error=id-tidak-valid'
+        );
+    }
+
+    try {
+        const affectedRows =
+            await kategoriModel.deleteKategori(id);
+        if (affectedRows === 0) {
+            return res.redirect(
+                303,
+                '/kategori?error=tidak-ditemukan'
+            );
+        }
+        return res.redirect(
+            303,
+            '/kategori?success=dihapus'
+        );
+
+    } catch (error) {
+        if (
+            error.code === 'ER_ROW_IS_REFERENCED_2' ||
+            error.code === 'ER_ROW_IS_REFERENCED'
+        ) {
+            return res.redirect(
+                303,
+                '/kategori?error=digunakan'
+            );
+        }
+        return next(error);
+    }
+};
+
 

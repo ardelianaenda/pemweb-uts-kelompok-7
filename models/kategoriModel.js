@@ -50,3 +50,15 @@ exports.updateKategori = async (id, nama, deskripsi) => {
     return result.affectedRows;
 };
 
+exports.deleteKategori = async (id) => {
+    const sql = `
+        DELETE FROM kategori
+        WHERE id = ?
+    `;
+
+    const [result] = await pool.execute(sql, [id]);
+
+    return result.affectedRows;
+};
+
+

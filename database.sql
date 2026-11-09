@@ -95,9 +95,16 @@ INSERT INTO meja (nomor_meja, kapasitas, status) VALUES
 ('M03', 6, 'terisi');
 
 INSERT INTO menu (kategori_id, nama, harga, stok) VALUES
-(1, 'Nasi Goreng', 25000, 15),
-(2, 'Es Kopi Susu', 18000, 20),
-(3, 'Brownies', 22000, 10);
+(1, 'Chicken Katsu', 23000, 15, '/images/chicken-katsu.jpg'),
+(1, 'Mie Goreng', 15000, 20, '/images/mie-goreng.jpg'),
+(1, 'French Fries', 20000, 25, '/images/french-fries.jpg'),
+(2, 'Matcha Latte', 22000, 15, '/images/matcha-latte.jpg'),
+(2, 'Kopi Aren Latte', 18000, 20, '/images/kopi-aren-latte.jpg'),
+(2, 'Americano', 15000, 15, '/images/americano.jpg'),
+(2, 'Lemon Tea', 12000, 25, '/images/lemon-tea.jpg'),
+(2, 'Ice Tea', 12000, 25, '/images/ice-tea.jpg'),
+(3, 'Ice Cream Waffle', 25000, 10, '/images/ice-cream-waffle.jpg'),
+(3, 'Tiramisu Cake', 27000, 12, '/images/tiramisu-cake.jpg');
 
 INSERT INTO pesanan (
     menu_id,

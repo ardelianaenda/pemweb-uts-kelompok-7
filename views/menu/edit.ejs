@@ -1,68 +1,173 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edit Menu</title>
+  <title>Edit Menu | Sunday Cafe</title>
+
   <link rel="stylesheet" href="/css/style.css">
   <%- include('../partials/head', { title: 'Edit Menu' }) %>
+  <link rel="stylesheet" href="/css/menu.css">
 </head>
 
 <body>
   <%- include('../partials/navbar') %>
 
-  <main class="container">
-    <h1>Edit Menu Cafe</h1>
+  <main class="container menu-page">
 
+    <!-- HEADER -->
+    <div class="menu-header">
+      <div>
+        <span class="menu-eyebrow">SUNDAY CAFE MANAGEMENT</span>
+        <h1>Edit Menu</h1>
+        <p>Perbarui informasi makanan atau minuman cafe.</p>
+      </div>
+
+      <a href="/menu" class="menu-btn-back">
+        ← Kembali
+      </a>
+    </div>
+
+    <!-- PESAN -->
     <% if (pesan) { %>
-      <p role="alert"><%= pesan %></p>
+      <div class="menu-alert" role="alert">
+        <%= pesan %>
+      </div>
     <% } %>
 
-    <form action="/menu/edit/<%= menu.id %>" method="POST">
-      <p>
-        <label for="nama">Nama Menu</label>
-        <input type="text" id="nama" name="nama"
-               value="<%= menu.nama %>"
-               maxlength="100" required>
-      </p>
+    <!-- FORM EDIT -->
+    <section class="menu-form-panel">
 
-      <p>
-        <label for="kategori_id">Kategori</label>
-        <select id="kategori_id" name="kategori_id" required>
-          <% kategori.forEach(item => { %>
-            <option value="<%= item.id %>"
-              <%= Number(menu.kategori_id) === Number(item.id)
-                  ? 'selected' : '' %>>
-              <%= item.nama %>
-            </option>
-          <% }) %>
-        </select>
-      </p>
+      <div class="menu-panel-heading">
+        <h2>Perbarui Informasi Menu</h2>
+        <p>Ubah data yang diperlukan, lalu simpan perubahan.</p>
+      </div>
 
-      <p>
-        <label for="harga">Harga (Rp)</label>
-        <input type="number" id="harga" name="harga"
-               value="<%= menu.harga %>"
-               min="0" max="99999999.99"
-               step="0.01" required>
-      </p>
+      <form
+        action="/menu/edit/<%= menu.id %>"
+        method="POST"
+        class="menu-form">
 
-      <p>
-        <label for="stok">Stok</label>
-        <input type="number" id="stok" name="stok"
-               value="<%= menu.stok %>"
-               min="0" step="1" required>
-      </p>
+        <!-- NAMA -->
+        <div class="menu-field">
+          <label for="nama">Nama Menu</label>
 
-      <p>
-        <label for="gambar">Alamat Gambar (Opsional)</label>
-        <input type="text" id="gambar" name="gambar"
-               value="<%= menu.gambar || '' %>">
-      </p>
+          <input
+            type="text"
+            id="nama"
+            name="nama"
+            value="<%= menu.nama %>"
+            maxlength="100"
+            required
+          >
+        </div>
 
-      <button type="submit">Simpan Perubahan</button>
-      <a href="/menu">Kembali</a>
-    </form>
+        <!-- KATEGORI -->
+        <div class="menu-field">
+          <label for="kategori_id">Kategori Menu</label>
+
+          <select
+            id="kategori_id"
+            name="kategori_id"
+            required>
+
+            <% kategori.forEach(item => { %>
+
+              <option
+                value="<%= item.id %>"
+                <%= Number(menu.kategori_id) === Number(item.id)
+                    ? 'selected' : '' %>
+              >
+                <%= item.nama %>
+              </option>
+
+            <% }) %>
+
+          </select>
+        </div>
+
+        <!-- HARGA DAN STOK -->
+        <div class="menu-form-row">
+
+          <div class="menu-field">
+            <label for="harga">Harga (Rp)</label>
+
+            <input
+              type="number"
+              id="harga"
+              name="harga"
+              value="<%= menu.harga %>"
+              min="0"
+              max="99999999.99"
+              step="0.01"
+              required
+            >
+          </div>
+
+          <div class="menu-field">
+            <label for="stok">Stok Tersedia</label>
+
+            <input
+              type="number"
+              id="stok"
+              name="stok"
+              value="<%= menu.stok %>"
+              min="0"
+              step="1"
+              required
+            >
+          </div>
+
+        </div>
+
+        <!-- GAMBAR -->
+        <div class="menu-field">
+          <label for="gambar">Alamat Gambar</label>
+
+          <input
+            type="text"
+            id="gambar"
+            name="gambar"
+            value="<%= menu.gambar || '' %>"
+            placeholder="/images/nama-menu.jpg"
+          >
+
+          <small class="menu-help">
+            Masukkan alamat gambar yang tersimpan di public/images.
+          </small>
+        </div>
+
+        <!-- PREVIEW GAMBAR -->
+        <% if (menu.gambar) { %>
+          <div class="menu-edit-preview">
+            <p>Foto Menu Saat Ini</p>
+
+            <img
+              src="<%= menu.gambar %>"
+              alt="<%= menu.nama %>"
+              onerror="this.hidden=true;"
+            >
+          </div>
+        <% } %>
+
+        <!-- TOMBOL -->
+        <div class="menu-form-actions">
+
+          <button type="submit" class="menu-btn-primary">
+            Simpan Perubahan
+          </button>
+
+          <a href="/menu" class="menu-btn-cancel">
+            Batal
+          </a>
+
+        </div>
+
+      </form>
+
+    </section>
+
   </main>
 
   <%- include('../partials/footer') %>

@@ -1,7 +1,7 @@
 
 const mejaModel = require('../models/mejaModel');
 
-const daftarStatus = ['Tersedia', 'Terisi', 'Reservasi'];
+const daftarStatus = ['tersedia', 'terisi', 'reservasi'];
 
 // Memeriksa ID dari URL
 function ambilId(req) {
@@ -18,7 +18,7 @@ function ambilId(req) {
 function validasiMeja(body) {
   const nomor_meja = String(body.nomor_meja || '').trim();
   const kapasitas = Number(body.kapasitas);
-  const status = String(body.status || '').trim();
+  const status = String(body.status || '').trim().toLowerCase();
 
   if (!nomor_meja || nomor_meja.length > 20) {
     return { error: 'Nomor meja wajib diisi, maksimal 20 karakter.' };

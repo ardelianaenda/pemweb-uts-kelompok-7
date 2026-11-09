@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu Cafe</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <%- include('../partials/head', { title: 'Menu Cafe' }) %>
+</head>
+
+<body>
+  <%- include('../partials/navbar') %>
+
+  <main class="container">
+    <h1>Daftar Menu Cafe</h1>
+    <p>Kelola makanan dan minuman cafe.</p>
+
+    <a href="/menu/tambah">+ Tambah Menu</a>
+
+    <% if (pesan) { %>
+      <p role="status"><%= pesan %></p>
+    <% } %>
+
+    <% if (menus.length === 0) { %>
+      <p>Belum ada menu yang tersedia.</p>
+    <% } else { %>
+
+      <div style="overflow-x: auto;">
+        <table border="1" cellpadding="10" style="width:100%;">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Gambar</th>
+              <th>Nama Menu</th>
+              <th>Kategori</th>
+              <th>Harga</th>
+              <th>Stok</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% menus.forEach((menu, index) => { %>
+              <tr>
+                <td><%= index + 1 %></td>
+
+                <td>
+                  <% if (menu.gambar) { %>
+                    <img
+                      src="<%= menu.gambar %>"
+                      alt="<%= menu.nama %>"
+                      width="90"
+                      height="80"
+                      style="object-fit:cover;"
+                      onerror="this.style.display='none';this.nextElementSibling.style.display='inline';"
+                    >
+                    <span style="display:none;">Foto belum tersedia</span>
+                  <% } else { %>
+                    Belum ada foto
+                  <% } %>
+                </td>
+
+                <td><%= menu.nama %></td>
+
+                <td>
+                  <%= menu.nama_kategori || '-' %>
+                </td>
+
+                <td>
+                  Rp <%= Number(menu.harga).toLocaleString('id-ID') %>
+                </td>
+
+                <td><%= menu.stok %></td>
+
+                <td>
+                  <a href="/menu/edit/<%= menu.id %>">
+                    Edit
+                  </a>
+
+                  <form
+                    action="/menu/hapus/<%= menu.id %>"
+                    method="POST"
+                    style="display:inline;"
+                    onsubmit="return confirm('Yakin hapus menu ini?')"
+                  >
+                    <button type="submit">Hapus</button>
+                  </form>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+
+    <% } %>
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>

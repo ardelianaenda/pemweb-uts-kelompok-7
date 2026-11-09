@@ -1,4 +1,3 @@
-
 const express = require('express');
 const path = require('path');
 
@@ -9,6 +8,7 @@ const kategoriRoutes = require('./routes/kategoriRoutes');
 const menuRoutes = require('./routes/menuRoutes');
 const pelangganRoutes = require('./routes/pelangganRoutes');
 const mejaRoutes = require('./routes/mejaRoutes');
+const pesananRoutes = require('./routes/pesananRoutes');
 
 const app = express();
 
@@ -31,6 +31,9 @@ app.use('/pelanggan', pelangganRoutes);
 
 // CRUD Meja - Anggota 4
 app.use('/meja', mejaRoutes);
+
+// CRUD Pesanan - Anggota 5
+app.use('/pesanan', pesananRoutes);
 
 // Dashboard Sunday Cafe
 app.use('/', dashboardRoutes);

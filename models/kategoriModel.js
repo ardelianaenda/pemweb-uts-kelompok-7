@@ -60,5 +60,3 @@ exports.deleteKategori = async (id) => {
 
     return result.affectedRows;
 };
-
-

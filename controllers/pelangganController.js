@@ -20,7 +20,7 @@ exports.index = async (req, res, next) => {
     const daftarPelanggan =
       await pelangganModel.getAllPelanggan();
 
-    
+
     res.render('pelanggan/index', {
         title: 'Data Pelanggan',
         daftarPelanggan,

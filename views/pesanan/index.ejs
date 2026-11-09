@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <%- include('../partials/headPesanan', { title: title }) %>
+</head>
+
+<body>
+  <%- include('../partials/navbar') %>
+
+  <main class="pesanan-page">
+    <div class="pesanan-header">
+      <div>
+        <span class="pesanan-eyebrow">SUNDAY CAFE MANAGEMENT</span>
+        <h1>Data Pesanan</h1>
+        <p>Kelola pesanan pelanggan Sunday Cafe.</p>
+      </div>
+
+      <a href="/pesanan/tambah" class="btn btn-primary">
+        + Tambah Pesanan
+      </a>
+    </div>
+
+    <% if (pesan) { %>
+      <div class="pesanan-alert" role="status">
+        <%= pesan %>
+      </div>
+    <% } %>
+
+    <div class="table-responsive">
+      <table class="pesanan-table">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Pelanggan</th>
+            <th>Menu</th>
+            <th>Meja</th>
+            <th>Harga</th>
+            <th>Jumlah</th>
+            <th>Subtotal</th>
+            <th>Status</th>
+            <th>Tanggal</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% if (pesanan.length === 0) { %>
+            <tr>
+              <td colspan="10" class="text-center">
+                Belum ada pesanan.
+              </td>
+            </tr>
+          <% } else { %>
+            <% pesanan.forEach((p, index) => { %>
+              <tr>
+                <td><%= index + 1 %></td>
+
+                <td><%= p.nama_pelanggan %></td>
+
+                <td><%= p.nama_menu %></td>
+
+                <td><%= p.nomor_meja %></td>
+
+                <td>
+                  Rp<%= Number(p.harga).toLocaleString('id-ID') %>
+                </td>
+
+                <td><%= p.jumlah %></td>
+
+                <td class="pesanan-total">
+                  Rp<%= Number(p.subtotal).toLocaleString('id-ID') %>
+                </td>
+
+                <td>
+                  <span class="pesanan-status status-<%= p.status %>">
+                    <%= p.status %>
+                  </span>
+                </td>
+
+                <td>
+                  <%= new Date(p.tanggal_pesanan)
+                    .toLocaleString('id-ID') %>
+                </td>
+
+                <td>
+                  <div class="pesanan-actions">
+                    <a
+                      href="/pesanan/edit/<%= p.id %>"
+                      class="btn btn-warning btn-sm"
+                    >
+                      Edit
+                    </a>
+
+                    <form
+                      action="/pesanan/hapus/<%= p.id %>"
+                      method="POST"
+                      onsubmit="return confirm('Yakin ingin menghapus pesanan ini?')"
+                    >
+                      <button
+                        type="submit"
+                        class="btn btn-danger btn-sm"
+                      >
+                        Hapus
+                      </button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+            <% }) %>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>

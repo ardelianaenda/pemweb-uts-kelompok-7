@@ -1,0 +1,368 @@
+
+/* SUNDAY CAFE - PESANAN */
+
+:root {
+  --cream: #faf6f0;
+  --coklat: #5c4033;
+  --coklat-tua: #3e2c23;
+  --putih: #ffffff;
+  --border: #e8ded4;
+  --hijau: #56775e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f8f3ec;
+  color: var(--coklat-tua);
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+/* NAVBAR */
+
+.site-header {
+  background: var(--coklat-tua);
+  padding: 17px 24px;
+}
+
+.nav-wrap {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.brand {
+  color: white;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.brand-icon {
+  margin-right: 8px;
+}
+
+.main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.main-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.main-nav a:hover {
+  color: #ebc99f;
+}
+
+/* HALAMAN PESANAN */
+
+.pesanan-page {
+  max-width: 1200px;
+  min-height: 65vh;
+  margin: 35px auto;
+  padding: 32px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+}
+
+.pesanan-eyebrow {
+  display: block;
+  color: #977c63;
+  letter-spacing: 2px;
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.pesanan-page h1 {
+  margin: 0 0 10px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 32px;
+  color: var(--coklat-tua);
+}
+
+.pesanan-page p {
+  line-height: 1.6;
+}
+
+.pesanan-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+/* TOMBOL */
+
+.btn {
+  display: inline-block;
+  padding: 11px 17px;
+  border: none;
+  border-radius: 9px;
+  text-decoration: none;
+  text-align: center;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn:hover {
+  filter: brightness(0.93);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--coklat);
+  color: white;
+}
+
+.btn-success {
+  background: var(--hijau);
+  color: white;
+}
+
+.btn-warning {
+  background: #e9bc76;
+  color: #382819;
+}
+
+.btn-danger {
+  background: #ad5149;
+  color: white;
+}
+
+.btn-secondary {
+  background: #e1d7cc;
+  color: var(--coklat-tua);
+}
+
+.btn-sm {
+  padding: 8px 12px;
+  font-size: 12px;
+}
+
+/* TABEL */
+
+.table-responsive {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: white;
+}
+
+.pesanan-table {
+  width: 100%;
+  min-width: 1050px;
+  border-collapse: collapse;
+}
+
+.pesanan-table th {
+  padding: 15px 12px;
+  background: var(--coklat);
+  color: white;
+  font-size: 13px;
+  text-align: left;
+}
+
+.pesanan-table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.pesanan-table tbody tr:hover {
+  background: #f8f0e7;
+}
+
+.pesanan-total {
+  font-weight: 700;
+  color: var(--coklat);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.pesanan-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pesanan-actions form {
+  margin: 0;
+}
+
+/* STATUS */
+
+.pesanan-status {
+  display: inline-block;
+  padding: 7px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-baru {
+  background: #e8edf8;
+  color: #365b91;
+}
+
+.status-diproses {
+  background: #fff0d4;
+  color: #98600d;
+}
+
+.status-selesai {
+  background: #e3f2e5;
+  color: #356f45;
+}
+
+.status-dibatalkan {
+  background: #f9e4e2;
+  color: #a33e38;
+}
+
+/* FORM */
+
+.pesanan-form {
+  max-width: 750px;
+  margin-top: 28px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 9px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-control {
+  width: 100%;
+  padding: 13px 14px;
+  background: white;
+  border: 1px solid #d8c8ba;
+  border-radius: 9px;
+  color: var(--coklat-tua);
+  font: inherit;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--coklat);
+  box-shadow: 0 0 0 3px rgba(92, 64, 51, 0.12);
+}
+
+/* SUBTOTAL */
+
+.pesanan-ringkasan {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  margin: 22px 0;
+  background: #eee5d9;
+  border-radius: 12px;
+}
+
+.pesanan-ringkasan strong {
+  font-size: 23px;
+  color: var(--coklat);
+}
+
+/* PESAN */
+
+.pesanan-alert {
+  padding: 14px 18px;
+  margin: 20px 0;
+  background: #f7e9d5;
+  border: 1px solid #e9cfae;
+  border-radius: 10px;
+  color: #634327;
+}
+
+/* FOOTER */
+
+.site-footer {
+  background: var(--coklat-tua);
+  color: white;
+  padding: 35px 24px 0;
+}
+
+.footer-wrap {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.footer-wrap h3 {
+  margin-top: 0;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 25px;
+  padding: 15px;
+  border-top: 1px solid rgba(255,255,255,.15);
+  font-size: 12px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .pesanan-page {
+    margin: 18px 12px;
+    padding: 20px;
+  }
+
+  .pesanan-page h1 {
+    font-size: 25px;
+  }
+
+  .pesanan-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .main-nav {
+    gap: 12px;
+  }
+
+  .pesanan-ringkasan {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pesanan-actions {
+    gap: 10px;
+  }
+}

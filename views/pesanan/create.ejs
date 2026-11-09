@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <%- include('../partials/headPesanan', { title: title }) %>
+</head>
+
+<body>
+  <%- include('../partials/navbar') %>
+
+  <main class="pesanan-page">
+    <span class="pesanan-eyebrow">SUNDAY CAFE MANAGEMENT</span>
+    <h1>Tambah Pesanan</h1>
+    <p>Tambahkan pesanan pelanggan baru.</p>
+
+    <% if (pesan) { %>
+      <div class="pesanan-alert" role="alert">
+        <%= pesan %>
+      </div>
+    <% } %>
+
+    <% const siap =
+      pelanggan.length > 0 &&
+      menu.length > 0 &&
+      meja.length > 0; %>
+
+    <% if (!siap) { %>
+      <div class="pesanan-alert">
+        Data pelanggan, menu, atau meja belum tersedia.
+      </div>
+    <% } %>
+
+    <form action="/pesanan/tambah" method="POST"
+          class="pesanan-form">
+
+      <div class="form-group">
+        <label for="pelanggan_id">Nama Pelanggan</label>
+
+        <select
+          id="pelanggan_id"
+          name="pelanggan_id"
+          class="form-control"
+          required
+        >
+          <option value="">Pilih Pelanggan</option>
+
+          <% pelanggan.forEach(p => { %>
+            <option value="<%= p.id %>">
+              <%= p.nama %>
+            </option>
+          <% }) %>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="menu_id">Pilih Menu</label>
+
+        <select
+          id="menu_id"
+          name="menu_id"
+          class="form-control"
+          required
+        >
+          <option value="">Pilih Menu</option>
+
+          <% menu.forEach(m => { %>
+            <option
+              value="<%= m.id %>"
+              data-harga="<%= m.harga %>"
+            >
+              <%= m.nama %> -
+              Rp<%= Number(m.harga).toLocaleString('id-ID') %>
+              (Stok: <%= m.stok %>)
+            </option>
+          <% }) %>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="meja_id">Nomor Meja</label>
+
+        <select
+          id="meja_id"
+          name="meja_id"
+          class="form-control"
+          required
+        >
+          <option value="">Pilih Meja</option>
+
+          <% meja.forEach(m => { %>
+            <option value="<%= m.id %>">
+              <%= m.nomor_meja %>
+            </option>
+          <% }) %>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="jumlah">Jumlah Pesanan</label>
+
+        <input
+          type="number"
+          id="jumlah"
+          name="jumlah"
+          class="form-control"
+          min="1"
+          step="1"
+          value="1"
+          required
+        >
+      </div>
+
+      <div class="pesanan-ringkasan">
+        <span>Perkiraan Subtotal</span>
+        <strong id="subtotal">Rp0</strong>
+      </div>
+
+      <div class="form-group">
+        <label for="status">Status Pesanan</label>
+
+        <select
+          id="status"
+          name="status"
+          class="form-control"
+          required
+        >
+          <option value="baru" selected>Baru</option>
+          <option value="diproses">Diproses</option>
+          <option value="selesai">Selesai</option>
+          <option value="dibatalkan">Dibatalkan</option>
+        </select>
+      </div>
+
+      <div class="pesanan-actions">
+        <button type="submit" class="btn btn-success"
+                <%= !siap ? 'disabled' : '' %>>
+          Simpan Pesanan
+        </button>
+
+        <a href="/pesanan" class="btn btn-secondary">
+          Kembali
+        </a>
+      </div>
+    </form>
+  </main>
+
+  <%- include('../partials/footer') %>
+
+  <script>
+    const menuSelect = document.getElementById('menu_id');
+    const jumlahInput = document.getElementById('jumlah');
+    const subtotalText = document.getElementById('subtotal');
+
+    function hitungSubtotal() {
+      const pilihan = menuSelect.selectedOptions[0];
+      const harga = Number(pilihan?.dataset.harga || 0);
+      const jumlah = Number(jumlahInput.value || 0);
+
+      const subtotal = harga * jumlah;
+
+      subtotalText.textContent =
+        'Rp' + subtotal.toLocaleString('id-ID');
+    }
+
+    menuSelect.addEventListener('change', hitungSubtotal);
+    jumlahInput.addEventListener('input', hitungSubtotal);
+
+    hitungSubtotal();
+  </script>
+</body>
+</html>

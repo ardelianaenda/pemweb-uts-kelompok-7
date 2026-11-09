@@ -179,7 +179,6 @@ exports.update = async (req, res, next) => {
                 `/kategori/edit/${id}?error=validasi`
             );
         }
-        
         const affectedRows = await kategoriModel.updateKategori(
             id,
             nama,
@@ -245,5 +244,3 @@ exports.destroy = async (req, res, next) => {
         return next(error);
     }
 };
-
-

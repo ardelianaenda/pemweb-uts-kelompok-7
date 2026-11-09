@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Meja</title>
+  <%- include('../partials/head') %>
+</head>
+<body>
+  <%- include('../partials/navbar') %>
+
+  <main>
+    <h1>Edit Data Meja</h1>
+
+    <% if (pesan) { %>
+      <p role="alert"><%= pesan %></p>
+    <% } %>
+
+    <form action="/meja/edit/<%= meja.id %>" method="POST">
+
+      <div>
+        <label for="nomor_meja">Nomor Meja</label>
+        <input
+          type="text"
+          id="nomor_meja"
+          name="nomor_meja"
+          value="<%= meja.nomor_meja %>"
+          maxlength="20"
+          required
+        >
+      </div>
+
+      <div>
+        <label for="kapasitas">Kapasitas</label>
+        <input
+          type="number"
+          id="kapasitas"
+          name="kapasitas"
+          value="<%= meja.kapasitas %>"
+          min="1"
+          required
+        >
+      </div>
+
+      <div>
+        <label for="status">Status Meja</label>
+        <select id="status" name="status">
+
+          <option value="Tersedia"
+            <%= meja.status === 'Tersedia' ? 'selected' : '' %>>
+            Tersedia
+          </option>
+
+          <option value="Terisi"
+            <%= meja.status === 'Terisi' ? 'selected' : '' %>>
+            Terisi
+          </option>
+
+          <option value="Reservasi"
+            <%= meja.status === 'Reservasi' ? 'selected' : '' %>>
+            Reservasi
+          </option>
+
+        </select>
+      </div>
+
+      <button type="submit">Simpan Perubahan</button>
+      <a href="/meja">Kembali</a>
+    </form>
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>

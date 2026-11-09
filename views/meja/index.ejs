@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daftar Meja - Cafe Management System</title>
+  <%- include('../partials/head') %>
+</head>
+<body>
+  <%- include('../partials/navbar') %>
+
+  <main>
+    <h1>Manajemen Meja Cafe</h1>
+
+    <p>Kelola seluruh meja yang tersedia di cafe.</p>
+
+    <% if (pesan) { %>
+      <p role="alert"><%= pesan %></p>
+    <% } %>
+
+    <p>
+      <a href="/meja/tambah">+ Tambah Meja</a>
+    </p>
+
+    <table border="1" cellpadding="10">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nomor Meja</th>
+          <th>Kapasitas</th>
+          <th>Status</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (daftarMeja.length === 0) { %>
+          <tr>
+            <td colspan="5">
+              Belum ada data meja.
+            </td>
+          </tr>
+        <% } else { %>
+          <% daftarMeja.forEach(function(item) { %>
+            <tr>
+              <td><%= item.id %></td>
+              <td><%= item.nomor_meja %></td>
+              <td><%= item.kapasitas %> orang</td>
+              <td><%= item.status %></td>
+              <td>
+                <a href="/meja/edit/<%= item.id %>">
+                  Edit
+                </a>
+
+                <form
+                  action="/meja/hapus/<%= item.id %>"
+                  method="POST"
+                  style="display:inline;"
+                  onsubmit="return confirm('Yakin ingin menghapus meja ini?')"
+                >
+                  <button type="submit">Hapus</button>
+                </form>
+              </td>
+            </tr>
+          <% }); %>
+        <% } %>
+      </tbody>
+    </table>
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>

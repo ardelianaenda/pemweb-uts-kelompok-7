@@ -1,17 +1,14 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edit Menu | Sunday Cafe</title>
 
-  <link rel="stylesheet" href="/css/style.css">
   <%- include('../partials/head', { title: 'Edit Menu' }) %>
   <link rel="stylesheet" href="/css/menu.css">
 </head>
 
-<body>
+<body class="management-page">
   <%- include('../partials/navbar') %>
 
   <main class="container menu-page">
@@ -29,7 +26,7 @@
       </a>
     </div>
 
-    <!-- PESAN -->
+    <!-- PESAN ERROR -->
     <% if (pesan) { %>
       <div class="menu-alert" role="alert">
         <%= pesan %>
@@ -49,7 +46,7 @@
         method="POST"
         class="menu-form">
 
-        <!-- NAMA -->
+        <!-- NAMA MENU -->
         <div class="menu-field">
           <label for="nama">Nama Menu</label>
 
@@ -73,15 +70,12 @@
             required>
 
             <% kategori.forEach(item => { %>
-
               <option
                 value="<%= item.id %>"
                 <%= Number(menu.kategori_id) === Number(item.id)
-                    ? 'selected' : '' %>
-              >
+                    ? 'selected' : '' %>>
                 <%= item.nama %>
               </option>
-
             <% }) %>
 
           </select>
@@ -134,7 +128,9 @@
           >
 
           <small class="menu-help">
-            Masukkan alamat gambar yang tersimpan di public/images.
+            Opsional. Simpan gambar di folder
+            public/images, lalu masukkan alamatnya.
+            Contoh: /images/matcha-latte.jpg
           </small>
         </div>
 
@@ -151,10 +147,12 @@
           </div>
         <% } %>
 
-        <!-- TOMBOL -->
+        <!-- TOMBOL SIMPAN DAN BATAL -->
         <div class="menu-form-actions">
 
-          <button type="submit" class="menu-btn-primary">
+          <button
+            type="submit"
+            class="menu-btn-primary">
             Simpan Perubahan
           </button>
 

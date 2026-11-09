@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <%- include('../partials/head', { title: 'Tambah Menu' }) %>
+  <link rel="stylesheet" href="/css/menu.css">
+</head>
+
+<body class="management-page">
+  <%- include('../partials/navbar') %>
+
+  <main class="container menu-page">
+
+    <!-- HEADER -->
+    <div class="menu-header">
+      <div>
+        <span class="menu-eyebrow">SUNDAY CAFE MANAGEMENT</span>
+        <h1>Tambah Menu</h1>
+        <p>Tambahkan pilihan makanan dan minuman baru.</p>
+      </div>
+
+      <a href="/menu" class="menu-btn-back">
+        ← Kembali
+      </a>
+    </div>
+
+    <!-- PESAN ERROR -->
+    <% if (pesan) { %>
+      <div class="menu-alert" role="alert">
+        <%= pesan %>
+      </div>
+    <% } %>
+
+    <% if (kategori.length === 0) { %>
+      <div class="menu-alert" role="alert">
+        Belum ada kategori. Tambahkan kategori terlebih dahulu.
+      </div>
+    <% } %>
+
+    <!-- FORM TAMBAH -->
+    <section class="menu-form-panel">
+
+      <div class="menu-panel-heading">
+        <h2>Informasi Menu</h2>
+        <p>Isi data menu dengan lengkap dan benar.</p>
+      </div>
+
+      <form action="/menu/tambah"
+            method="POST"
+            class="menu-form">
+
+        <!-- NAMA -->
+        <div class="menu-field">
+          <label for="nama">Nama Menu</label>
+
+          <input
+            type="text"
+            id="nama"
+            name="nama"
+            placeholder="Contoh: Matcha Latte"
+            maxlength="100"
+            required
+          >
+        </div>
+
+        <!-- KATEGORI -->
+        <div class="menu-field">
+          <label for="kategori_id">Kategori Menu</label>
+
+          <select id="kategori_id"
+                  name="kategori_id"
+                  required>
+            <option value="">-- Pilih Kategori --</option>
+
+            <% kategori.forEach(item => { %>
+              <option value="<%= item.id %>">
+                <%= item.nama %>
+              </option>
+            <% }) %>
+          </select>
+        </div>
+
+        <!-- HARGA DAN STOK -->
+        <div class="menu-form-row">
+
+          <div class="menu-field">
+            <label for="harga">Harga (Rp)</label>
+
+            <input
+              type="number"
+              id="harga"
+              name="harga"
+              placeholder="Contoh: 22000"
+              min="0"
+              max="99999999.99"
+              step="0.01"
+              required
+            >
+          </div>
+
+          <div class="menu-field">
+            <label for="stok">Stok Tersedia</label>
+
+            <input
+              type="number"
+              id="stok"
+              name="stok"
+              placeholder="Contoh: 15"
+              min="0"
+              step="1"
+              required
+            >
+          </div>
+
+        </div>
+
+        <!-- GAMBAR -->
+        <div class="menu-field">
+          <label for="gambar">Alamat Gambar</label>
+
+          <input
+            type="text"
+            id="gambar"
+            name="gambar"
+            placeholder="/images/matcha-latte.jpg"
+          >
+
+          <small class="menu-help">
+            Opsional. Simpan foto di folder public/images,
+            kemudian masukkan alamatnya di sini.
+          </small>
+        </div>
+
+        <!-- TOMBOL -->
+        <div class="menu-form-actions">
+          <button
+            type="submit"
+            class="menu-btn-primary"
+            <%= kategori.length === 0 ? 'disabled' : '' %>
+          >
+            Simpan Menu
+          </button>
+
+          <a href="/menu" class="menu-btn-cancel">
+            Batal
+          </a>
+        </div>
+
+      </form>
+
+    </section>
+
+  </main>
+
+  <%- include('../partials/footer') %>
+</body>
+</html>

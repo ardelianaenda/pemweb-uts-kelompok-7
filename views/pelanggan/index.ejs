@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <%- include('../partials/head') %>
+
+  <link rel="stylesheet" href="/css/pelanggan.css">
+</head>
+
+<body class="pelanggan-page">
+
+  <%- include('../partials/navbar') %>
+
+  <main class="pelanggan-main">
+
+    <div class="pelanggan-card">
+
+      <div class="pelanggan-toolbar">
+        <div>
+          <h1 class="pelanggan-judul">
+            Data Pelanggan
+          </h1>
+
+          <p class="pelanggan-deskripsi">
+            Kelola data pelanggan Sunday Cafe.
+          </p>
+        </div>
+
+        <a href="/pelanggan/tambah"
+           class="pelanggan-btn pelanggan-btn-primary">
+          + Tambah Pelanggan
+        </a>
+      </div>
+
+      <% if (pesan) { %>
+        <div class="pelanggan-alert pelanggan-alert-success">
+          <%= pesan %>
+        </div>
+      <% } %>
+
+      <% if (error) { %>
+        <div class="pelanggan-alert pelanggan-alert-error">
+          <%= error %>
+        </div>
+      <% } %>
+
+      <div class="pelanggan-table-wrap">
+
+        <table class="pelanggan-table">
+
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nama Pelanggan</th>
+              <th>Nomor HP</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <% if (daftarPelanggan.length === 0) { %>
+
+              <tr>
+                <td colspan="4" style="text-align:center;">
+                  Belum ada data pelanggan.
+                </td>
+              </tr>
+
+            <% } else { %>
+
+              <% daftarPelanggan.forEach(function(pelanggan) { %>
+
+                <tr>
+                  <td><%= pelanggan.id %></td>
+                  <td><%= pelanggan.nama %></td>
+                  <td><%= pelanggan.no_hp %></td>
+
+                  <td>
+                    <div class="pelanggan-aksi">
+
+                      <a
+                        href="/pelanggan/edit/<%= pelanggan.id %>"
+                        class="pelanggan-btn pelanggan-btn-edit">
+                        Edit
+                      </a>
+
+                      <form
+                        action="/pelanggan/hapus/<%= pelanggan.id %>"
+                        method="POST"
+                        onsubmit="return confirm('Yakin ingin menghapus pelanggan ini?')">
+
+                        <button
+                          type="submit"
+                          class="pelanggan-btn pelanggan-btn-danger">
+                          Hapus
+                        </button>
+
+                      </form>
+
+                    </div>
+                  </td>
+                </tr>
+
+              <% }) %>
+
+            <% } %>
+
+          </tbody>
+        </table>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <%- include('../partials/footer') %>
+
+</body>
+</html>

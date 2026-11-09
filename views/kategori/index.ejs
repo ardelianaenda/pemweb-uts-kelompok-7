@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -42,6 +41,7 @@
                                 <th>ID</th>
                                 <th>Nama Kategori</th>
                                 <th>Deskripsi</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
 
@@ -58,7 +58,15 @@
                                         <td><%= item.id %></td>
                                         <td><%= item.nama %></td>
                                         <td><%= item.deskripsi || '-' %></td>
-                                    </tr>
+                                        <td>
+                                            <a
+                                            href="/kategori/edit/<%= item.id %>"
+                                            class="btn-edit"
+                                            >
+                                            ✎ Edit
+                                        </a>
+                                    </td>
+                                </tr>
                                 <% }) %>
                             <% } %>
                         </tbody>

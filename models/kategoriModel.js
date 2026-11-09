@@ -22,3 +22,31 @@ exports.createKategori = async (nama, deskripsi) => {
     return result.insertId;
 };
 
+exports.getKategoriById = async (id) => {
+    const sql = `
+        SELECT id, nama, deskripsi
+        FROM kategori
+        WHERE id = ?
+    `;
+
+    const [rows] = await pool.execute(sql, [id]);
+
+    return rows[0] || null;
+};
+
+exports.updateKategori = async (id, nama, deskripsi) => {
+    const sql = `
+        UPDATE kategori
+        SET nama = ?, deskripsi = ?
+        WHERE id = ?
+    `;
+
+    const [result] = await pool.execute(sql, [
+        nama,
+        deskripsi,
+        id
+    ]);
+
+    return result.affectedRows;
+};
+

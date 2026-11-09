@@ -34,6 +34,7 @@ CREATE TABLE IF NOT EXISTS menu (
     nama VARCHAR(100) NOT NULL,
     harga DECIMAL(10,2) NOT NULL,
     stok INT NOT NULL DEFAULT 0,
+    gambar VARCHAR(255) NULL,
 
     CONSTRAINT fk_menu_kategori
     FOREIGN KEY (kategori_id)
@@ -94,7 +95,7 @@ INSERT INTO meja (nomor_meja, kapasitas, status) VALUES
 ('M02', 4, 'tersedia'),
 ('M03', 6, 'terisi');
 
-INSERT INTO menu (kategori_id, nama, harga, stok) VALUES
+INSERT INTO menu (kategori_id, nama, harga, stok, gambar) VALUES
 (1, 'Chicken Katsu', 23000, 15, '/images/chicken-katsu.jpg'),
 (1, 'Mie Goreng', 15000, 20, '/images/mie-goreng.jpg'),
 (1, 'French Fries', 20000, 25, '/images/french-fries.jpg'),

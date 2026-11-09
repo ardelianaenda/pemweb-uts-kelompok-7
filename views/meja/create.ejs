@@ -2,61 +2,83 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tambah Meja</title>
-  <%- include('../partials/head') %>
+  <%- include('../partials/head', { title: 'Tambah Meja - Sunday Cafe' }) %>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/meja.css">
 </head>
-<body>
+<body class="management-page meja-screen">
+
   <%- include('../partials/navbar') %>
 
-  <main>
-    <h1>Tambah Meja Baru</h1>
+  <main class="meja-page">
+    <div class="meja-container">
 
-    <% if (pesan) { %>
-      <p role="alert"><%= pesan %></p>
-    <% } %>
-
-    <form action="/meja/tambah" method="POST">
-
-      <div>
-        <label for="nomor_meja">Nomor Meja</label>
-        <input
-          type="text"
-          id="nomor_meja"
-          name="nomor_meja"
-          placeholder="Contoh: M01"
-          maxlength="20"
-          required
-        >
+      <div class="meja-header">
+        <div>
+          <span class="meja-eyebrow">SUNDAY CAFE MANAGEMENT</span>
+          <h1>Tambah Meja</h1>
+          <p>Tambahkan meja baru ke sistem cafe.</p>
+        </div>
+        <a href="/meja" class="meja-btn meja-btn-back">
+          Kembali
+        </a>
       </div>
 
-      <div>
-        <label for="kapasitas">Kapasitas</label>
-        <input
-          type="number"
-          id="kapasitas"
-          name="kapasitas"
-          min="1"
-          placeholder="Contoh: 4"
-          required
-        >
-      </div>
+      <% if (pesan) { %>
+        <div class="meja-alert" role="alert">
+          <%= pesan %>
+        </div>
+      <% } %>
 
-      <div>
-        <label for="status">Status Meja</label>
-        <select id="status" name="status" required>
-          <option value="Tersedia">Tersedia</option>
-          <option value="Terisi">Terisi</option>
-          <option value="Reservasi">Reservasi</option>
-        </select>
-      </div>
+      <section class="meja-form-card">
+        <h2>Form Tambah Meja</h2>
 
-      <button type="submit">Simpan Meja</button>
-      <a href="/meja">Kembali</a>
-    </form>
+        <form action="/meja/tambah" method="POST">
+
+          <div class="meja-form-group">
+            <label for="nomor_meja">Nomor Meja</label>
+            <input type="text"
+                   id="nomor_meja"
+                   name="nomor_meja"
+                   placeholder="Contoh: M04"
+                   maxlength="20"
+                   required>
+          </div>
+
+          <div class="meja-form-group">
+            <label for="kapasitas">Kapasitas Meja</label>
+            <input type="number"
+                   id="kapasitas"
+                   name="kapasitas"
+                   min="1"
+                   placeholder="Contoh: 4"
+                   required>
+          </div>
+
+          <div class="meja-form-group">
+            <label for="status">Status Meja</label>
+            <select id="status" name="status" required>
+              <option value="Tersedia">Tersedia</option>
+              <option value="Terisi">Terisi</option>
+              <option value="Reservasi">Reservasi</option>
+            </select>
+          </div>
+
+          <div class="meja-form-actions">
+            <button type="submit" class="meja-btn meja-btn-primary">
+              Simpan Meja
+            </button>
+            <a href="/meja" class="meja-btn meja-btn-back">
+              Batal
+            </a>
+          </div>
+        </form>
+      </section>
+
+    </div>
   </main>
 
   <%- include('../partials/footer') %>
+
 </body>
 </html>

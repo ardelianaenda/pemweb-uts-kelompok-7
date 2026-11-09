@@ -2,74 +2,92 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edit Meja</title>
-  <%- include('../partials/head') %>
+  <%- include('../partials/head', { title: 'Edit Meja - Sunday Cafe' }) %>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/meja.css">
 </head>
-<body>
+<body class="management-page meja-screen">
+
   <%- include('../partials/navbar') %>
 
-  <main>
-    <h1>Edit Data Meja</h1>
+  <main class="meja-page">
+    <div class="meja-container">
 
-    <% if (pesan) { %>
-      <p role="alert"><%= pesan %></p>
-    <% } %>
-
-    <form action="/meja/edit/<%= meja.id %>" method="POST">
-
-      <div>
-        <label for="nomor_meja">Nomor Meja</label>
-        <input
-          type="text"
-          id="nomor_meja"
-          name="nomor_meja"
-          value="<%= meja.nomor_meja %>"
-          maxlength="20"
-          required
-        >
+      <div class="meja-header">
+        <div>
+          <span class="meja-eyebrow">SUNDAY CAFE MANAGEMENT</span>
+          <h1>Edit Data Meja</h1>
+          <p>Perbarui informasi meja cafe.</p>
+        </div>
+        <a href="/meja" class="meja-btn meja-btn-back">
+          Kembali
+        </a>
       </div>
 
-      <div>
-        <label for="kapasitas">Kapasitas</label>
-        <input
-          type="number"
-          id="kapasitas"
-          name="kapasitas"
-          value="<%= meja.kapasitas %>"
-          min="1"
-          required
-        >
-      </div>
+      <% if (pesan) { %>
+        <div class="meja-alert" role="alert">
+          <%= pesan %>
+        </div>
+      <% } %>
 
-      <div>
-        <label for="status">Status Meja</label>
-        <select id="status" name="status">
+      <section class="meja-form-card">
+        <h2>Form Edit Meja</h2>
 
-          <option value="Tersedia"
-            <%= meja.status === 'Tersedia' ? 'selected' : '' %>>
-            Tersedia
-          </option>
+        <form action="/meja/edit/<%= meja.id %>" method="POST">
 
-          <option value="Terisi"
-            <%= meja.status === 'Terisi' ? 'selected' : '' %>>
-            Terisi
-          </option>
+          <div class="meja-form-group">
+            <label for="nomor_meja">Nomor Meja</label>
+            <input type="text"
+                   id="nomor_meja"
+                   name="nomor_meja"
+                   value="<%= meja.nomor_meja %>"
+                   maxlength="20"
+                   required>
+          </div>
 
-          <option value="Reservasi"
-            <%= meja.status === 'Reservasi' ? 'selected' : '' %>>
-            Reservasi
-          </option>
+          <div class="meja-form-group">
+            <label for="kapasitas">Kapasitas Meja</label>
+            <input type="number"
+                   id="kapasitas"
+                   name="kapasitas"
+                   value="<%= meja.kapasitas %>"
+                   min="1"
+                   required>
+          </div>
 
-        </select>
-      </div>
+          <div class="meja-form-group">
+            <label for="status">Status Meja</label>
+            <select id="status" name="status" required>
+              <option value="Tersedia"
+                <%= String(meja.status).toLowerCase() === 'tersedia' ? 'selected' : '' %>>
+                Tersedia
+              </option>
+              <option value="Terisi"
+                <%= String(meja.status).toLowerCase() === 'terisi' ? 'selected' : '' %>>
+                Terisi
+              </option>
+              <option value="Reservasi"
+                <%= String(meja.status).toLowerCase() === 'reservasi' ? 'selected' : '' %>>
+                Reservasi
+              </option>
+            </select>
+          </div>
 
-      <button type="submit">Simpan Perubahan</button>
-      <a href="/meja">Kembali</a>
-    </form>
+          <div class="meja-form-actions">
+            <button type="submit" class="meja-btn meja-btn-primary">
+              Simpan Perubahan
+            </button>
+            <a href="/meja" class="meja-btn meja-btn-back">
+              Batal
+            </a>
+          </div>
+        </form>
+      </section>
+
+    </div>
   </main>
 
   <%- include('../partials/footer') %>
+
 </body>
 </html>

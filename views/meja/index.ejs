@@ -2,72 +2,99 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daftar Meja - Cafe Management System</title>
-  <%- include('../partials/head') %>
+  <%- include('../partials/head', { title: 'Daftar Meja - Sunday Cafe' }) %>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/meja.css">
 </head>
-<body>
+<body class="management-page meja-screen">
+
   <%- include('../partials/navbar') %>
 
-  <main>
-    <h1>Manajemen Meja Cafe</h1>
+  <main class="meja-page">
+    <div class="meja-container">
 
-    <p>Kelola seluruh meja yang tersedia di cafe.</p>
+      <div class="meja-header">
+        <div>
+          <span class="meja-eyebrow">SUNDAY CAFE MANAGEMENT</span>
+          <h1>Manajemen Meja Cafe</h1>
+          <p>Kelola data dan ketersediaan meja cafe.</p>
+        </div>
+        <a href="/meja/tambah" class="meja-btn meja-btn-primary">
+          + Tambah Meja
+        </a>
+      </div>
 
-    <% if (pesan) { %>
-      <p role="alert"><%= pesan %></p>
-    <% } %>
+      <% if (pesan) { %>
+        <div class="meja-alert" role="alert">
+          <%= pesan %>
+        </div>
+      <% } %>
 
-    <p>
-      <a href="/meja/tambah">+ Tambah Meja</a>
-    </p>
+      <section class="meja-card">
+        <div class="meja-card-top">
+          <h2>Daftar Meja</h2>
+          <span>Total: <%= daftarMeja.length %> meja</span>
+        </div>
 
-    <table border="1" cellpadding="10">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nomor Meja</th>
-          <th>Kapasitas</th>
-          <th>Status</th>
-          <th>Aksi</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% if (daftarMeja.length === 0) { %>
-          <tr>
-            <td colspan="5">
-              Belum ada data meja.
-            </td>
-          </tr>
-        <% } else { %>
-          <% daftarMeja.forEach(function(item) { %>
-            <tr>
-              <td><%= item.id %></td>
-              <td><%= item.nomor_meja %></td>
-              <td><%= item.kapasitas %> orang</td>
-              <td><%= item.status %></td>
-              <td>
-                <a href="/meja/edit/<%= item.id %>">
-                  Edit
-                </a>
+        <div class="meja-table-wrap">
+          <table class="meja-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nomor Meja</th>
+                <th>Kapasitas</th>
+                <th>Status</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
 
-                <form
-                  action="/meja/hapus/<%= item.id %>"
-                  method="POST"
-                  style="display:inline;"
-                  onsubmit="return confirm('Yakin ingin menghapus meja ini?')"
-                >
-                  <button type="submit">Hapus</button>
-                </form>
-              </td>
-            </tr>
-          <% }); %>
-        <% } %>
-      </tbody>
-    </table>
+            <tbody>
+              <% if (daftarMeja.length === 0) { %>
+                <tr>
+                  <td colspan="5" class="meja-empty">
+                    Belum ada data meja.
+                  </td>
+                </tr>
+              <% } else { %>
+                <% daftarMeja.forEach(function(item) { %>
+                  <tr>
+                    <td><%= item.id %></td>
+                    <td><strong><%= item.nomor_meja %></strong></td>
+                    <td><%= item.kapasitas %> orang</td>
+                    <td>
+                      <span class="meja-status <%= String(item.status).toLowerCase() %>">
+                        <%= item.status %>
+                      </span>
+                    </td>
+                    <td>
+                      <div class="meja-actions">
+                        <a href="/meja/edit/<%= item.id %>"
+                           class="meja-btn meja-btn-edit">
+                          Edit
+                        </a>
+
+                        <form action="/meja/hapus/<%= item.id %>"
+                              method="POST"
+                              onsubmit="return confirm('Yakin hapus meja ini?')">
+                          <button type="submit"
+                                  class="meja-btn meja-btn-delete">
+                            Hapus
+                          </button>
+                        </form>
+                      </div>
+                    </td>
+                  </tr>
+                <% }); %>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
   </main>
 
   <%- include('../partials/footer') %>
+
 </body>
 </html>

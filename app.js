@@ -4,6 +4,7 @@ const path = require('path');
 const dashboardRoutes = require('./routes/dashboardRoutes');
 const errorHandler = require('./middlewares/errorHandler');
 const kategoriRoutes = require('./routes/kategoriRoutes');
+const mejaRoutes = require('./routes/mejaRoutes');
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', dashboardRoutes);
 app.use('/kategori', kategoriRoutes);
+app.use('/meja', mejaRoutes);
 
 app.use((req, res, next) => {
     const error = new Error('Halaman tidak ditemukan');

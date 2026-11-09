@@ -42,6 +42,7 @@ async function index(req, res) {
   const daftarMeja = await mejaModel.getAllMeja();
 
   res.render('meja/index', {
+    title: 'Manajemen Meja - Sunday Cafe',
     daftarMeja,
     pesan: req.query.pesan || ''
   });
@@ -50,6 +51,7 @@ async function index(req, res) {
 // Menampilkan form tambah
 function formTambah(req, res) {
   res.render('meja/create', {
+    title: 'Tambah Meja - Sunday Cafe',
     pesan: req.query.pesan || ''
   });
 }
